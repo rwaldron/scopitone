@@ -1,24 +1,32 @@
 var DCMotor = require('./dcMotor'),
     five = require('johnny-five'),
-    board = new five.Board();
+    board = new five.Board(),
+    motor;
 
 board.on('ready', function() {
-  var motor = new DCMotor(1);
+  motor = new DCMotor(1);
 
   motor.on('forward', function() {
     console.log('forward');
     setTimeout(function() {
-      motor.backward()
-    }, 1000);
+      motor.backward(255)
+    }, 100);
   });
 
   motor.on('backward', function() {
     console.log('backward');
     setTimeout(function() {
-      motor.forward()
-    }, 1000);
+      motor.forward(255)
+    }, 100);
   });
 
-  motor.backward();
+  motor.backward(255);
 
 });
+
+var shutdown = function () {
+  console.log('shutting down...');
+  motor.stop();
+};
+process.on('SIGTERM', shutdown);
+process.on('SIGINT', shutdown);
