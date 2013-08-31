@@ -1,0 +1,10 @@
+{
+  "name": "scopitone",
+  "version": "0.0.1",
+  "description": "First try at driving adafruit motor shield from johnny-five",
+  "author": "Xavier Seignard <xavier.seignard@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "johnny-five": "~0.7.2"
+  }
+}
